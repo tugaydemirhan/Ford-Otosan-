@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="yenimvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="basvuru">
+          <Key>
+            <PropertyRef Name="basvuruid" />
+          </Key>
+          <Property Name="basvuruid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="cv" Type="varbinary(max)" />
+          <Property Name="soru1" Type="int" />
+          <Property Name="soru2" Type="int" />
+          <Property Name="soru3" Type="int" />
+          <Property Name="soru4" Type="int" />
+          <Property Name="soru5" Type="int" />
+          <Property Name="cevap1" Type="varbinary" MaxLength="500" />
+          <Property Name="cevap2" Type="varchar" MaxLength="500" />
+          <Property Name="cevap3" Type="nchar" MaxLength="500" />
+          <Property Name="cevap4" Type="nchar" MaxLength="500" />
+          <Property Name="cevap5" Type="nchar" MaxLength="500" />
+          <Property Name="cd_creater" Type="int" />
+          <Property Name="dt_created" Type="datetime" />
+          <Property Name="cd_modifier" Type="int" />
+          <Property Name="dt_modified" Type="datetime" />
+          <Property Name="Kayit_sonlandir" Type="int" />
+        </EntityType>
+        <EntityType Name="ilan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="baslik" Type="varchar" MaxLength="500" />
+          <Property Name="baslangic" Type="datetime" />
+          <Property Name="bitis" Type="datetime" />
+          <Property Name="aciklama" Type="varchar(max)" />
+          <Property Name="pozisyon" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isim" Type="nchar" MaxLength="10" />
+          <Property Name="baslangic_tarihi" Type="datetime" />
+          <Property Name="bitis_tarihi" Type="datetime" />
+          <Property Name="basvuranlarin_listesi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="resim">
+          <Key>
+            <PropertyRef Name="resimId" />
+          </Key>
+          <Property Name="resimId" Type="int" Nullable="false" />
+          <Property Name="isim" Type="varchar" MaxLength="150" />
+          <Property Name="goruntu" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Sorular">
+          <Key>
+            <PropertyRef Name="Soruid" />
+          </Key>
+          <Property Name="Soruid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="soru" Type="nchar" MaxLength="100" />
+          <Property Name="cevap" Type="nchar" MaxLength="100" />
+          <Property Name="cd_creater" Type="int" />
+          <Property Name="cd_modifier" Type="int" />
+          <Property Name="dt_created" Type="datetime" />
+          <Property Name="dt_modified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="parola" Type="nchar" MaxLength="25" />
+          <Property Name="isim" Type="nchar" MaxLength="50" />
+          <Property Name="soyisim" Type="nchar" MaxLength="50" />
+          <Property Name="bölüm" Type="nchar" MaxLength="100" />
+          <Property Name="öğretim türü" Type="nchar" MaxLength="100" />
+          <Property Name="telefon" Type="nchar" MaxLength="20" />
+          <Property Name="mail" Type="nchar" MaxLength="100" />
+          <Property Name="Not_Ortalamasi" Type="float" />
+          <Property Name="cd_modifier" Type="int" />
+          <Property Name="dt_modified" Type="datetime" />
+          <Property Name="dt_created" Type="datetime" />
+          <Property Name="isAdmin" Type="int" />
+          <Property Name="applicationList" Type="varchar" MaxLength="250" />
+          <Property Name="picture" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="basvurusoru1">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru2">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru3">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru4">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru5">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__basvuru__userid__2F10007B">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="is">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="yenimvcModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="basvuru" EntityType="Self.basvuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilan" EntityType="Self.ilan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="resim" EntityType="Self.resim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sorular" EntityType="Self.Sorular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="basvurusoru1" Association="Self.basvurusoru1">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru2" Association="Self.basvurusoru2">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru3" Association="Self.basvurusoru3">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru4" Association="Self.basvurusoru4">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru5" Association="Self.basvurusoru5">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__basvuru__userid__2F10007B" Association="Self.FK__basvuru__userid__2F10007B">
+            <End Role="User" EntitySet="User" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="is" Association="Self.is">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="yenimvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="basvuru">
+          <Key>
+            <PropertyRef Name="basvuruid" />
+          </Key>
+          <Property Name="basvuruid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="cv" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="soru1" Type="Int32" />
+          <Property Name="soru2" Type="Int32" />
+          <Property Name="soru3" Type="Int32" />
+          <Property Name="soru4" Type="Int32" />
+          <Property Name="soru5" Type="Int32" />
+          <Property Name="cevap1" Type="Binary" MaxLength="500" FixedLength="false" />
+          <Property Name="cevap2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cevap3" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="cevap4" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="cevap5" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="cd_creater" Type="Int32" />
+          <Property Name="dt_created" Type="DateTime" Precision="3" />
+          <Property Name="cd_modifier" Type="Int32" />
+          <Property Name="dt_modified" Type="DateTime" Precision="3" />
+          <Property Name="Kayit_sonlandir" Type="Int32" />
+          <NavigationProperty Name="Sorular" Relationship="Self.basvurusoru1" FromRole="basvuru" ToRole="Sorular" />
+          <NavigationProperty Name="Sorular1" Relationship="Self.basvurusoru2" FromRole="basvuru" ToRole="Sorular" />
+          <NavigationProperty Name="Sorular2" Relationship="Self.basvurusoru3" FromRole="basvuru" ToRole="Sorular" />
+          <NavigationProperty Name="Sorular3" Relationship="Self.basvurusoru4" FromRole="basvuru" ToRole="Sorular" />
+          <NavigationProperty Name="Sorular4" Relationship="Self.basvurusoru5" FromRole="basvuru" ToRole="Sorular" />
+          <NavigationProperty Name="User" Relationship="Self.FK__basvuru__userid__2F10007B" FromRole="basvuru" ToRole="User" />
+          <NavigationProperty Name="Job" Relationship="Self.is" FromRole="basvuru" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="ilan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="baslik" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="baslangic" Type="DateTime" Precision="3" />
+          <Property Name="bitis" Type="DateTime" Precision="3" />
+          <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pozisyon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="baslangic_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="bitis_tarihi" Type="DateTime" Precision="3" />
+          <Property Name="basvuranlarin_listesi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="basvuru" Relationship="Self.is" FromRole="Job" ToRole="basvuru" />
+        </EntityType>
+        <EntityType Name="resim">
+          <Key>
+            <PropertyRef Name="resimId" />
+          </Key>
+          <Property Name="resimId" Type="Int32" Nullable="false" />
+          <Property Name="isim" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="goruntu" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Sorular">
+          <Key>
+            <PropertyRef Name="Soruid" />
+          </Key>
+          <Property Name="Soruid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="soru" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="cevap" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="cd_creater" Type="Int32" />
+          <Property Name="cd_modifier" Type="Int32" />
+          <Property Name="dt_created" Type="DateTime" Precision="3" />
+          <Property Name="dt_modified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="basvuru" Relationship="Self.basvurusoru1" FromRole="Sorular" ToRole="basvuru" />
+          <NavigationProperty Name="basvuru1" Relationship="Self.basvurusoru2" FromRole="Sorular" ToRole="basvuru" />
+          <NavigationProperty Name="basvuru2" Relationship="Self.basvurusoru3" FromRole="Sorular" ToRole="basvuru" />
+          <NavigationProperty Name="basvuru3" Relationship="Self.basvurusoru4" FromRole="Sorular" ToRole="basvuru" />
+          <NavigationProperty Name="basvuru4" Relationship="Self.basvurusoru5" FromRole="Sorular" ToRole="basvuru" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="parola" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="isim" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="bölüm" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="öğretim_türü" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="mail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Not_Ortalamasi" Type="Double" />
+          <Property Name="cd_modifier" Type="Int32" />
+          <Property Name="dt_modified" Type="DateTime" Precision="3" />
+          <Property Name="dt_created" Type="DateTime" Precision="3" />
+          <Property Name="isAdmin" Type="Int32" />
+          <Property Name="applicationList" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="basvuru" Relationship="Self.FK__basvuru__userid__2F10007B" FromRole="User" ToRole="basvuru" />
+        </EntityType>
+        <Association Name="basvurusoru1">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru2">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru3">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru4">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="basvurusoru5">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="Soruid" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="soru5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__basvuru__userid__2F10007B">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="is">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="basvuru">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="yenimvcEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="basvuru" EntityType="Self.basvuru" />
+          <EntitySet Name="ilan" EntityType="Self.ilan" />
+          <EntitySet Name="Job" EntityType="Self.Job" />
+          <EntitySet Name="resim" EntityType="Self.resim" />
+          <EntitySet Name="Sorular" EntityType="Self.Sorular" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="basvurusoru1" Association="Self.basvurusoru1">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru2" Association="Self.basvurusoru2">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru3" Association="Self.basvurusoru3">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru4" Association="Self.basvurusoru4">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="basvurusoru5" Association="Self.basvurusoru5">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__basvuru__userid__2F10007B" Association="Self.FK__basvuru__userid__2F10007B">
+            <End Role="User" EntitySet="User" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+          <AssociationSet Name="is" Association="Self.is">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="basvuru" EntitySet="basvuru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="yenimvcModelStoreContainer" CdmEntityContainer="yenimvcEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="yenimvcModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="basvuru">
+            <EntityTypeMapping TypeName="yenimvcModel.basvuru">
+              <MappingFragment StoreEntitySet="basvuru">
+                <ScalarProperty Name="basvuruid" ColumnName="basvuruid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="cv" ColumnName="cv" />
+                <ScalarProperty Name="soru1" ColumnName="soru1" />
+                <ScalarProperty Name="soru2" ColumnName="soru2" />
+                <ScalarProperty Name="soru3" ColumnName="soru3" />
+                <ScalarProperty Name="soru4" ColumnName="soru4" />
+                <ScalarProperty Name="soru5" ColumnName="soru5" />
+                <ScalarProperty Name="cevap1" ColumnName="cevap1" />
+                <ScalarProperty Name="cevap2" ColumnName="cevap2" />
+                <ScalarProperty Name="cevap3" ColumnName="cevap3" />
+                <ScalarProperty Name="cevap4" ColumnName="cevap4" />
+                <ScalarProperty Name="cevap5" ColumnName="cevap5" />
+                <ScalarProperty Name="cd_creater" ColumnName="cd_creater" />
+                <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+                <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+                <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+                <ScalarProperty Name="Kayit_sonlandir" ColumnName="Kayit_sonlandir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilan">
+            <EntityTypeMapping TypeName="yenimvcModel.ilan">
+              <MappingFragment StoreEntitySet="ilan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="baslik" ColumnName="baslik" />
+                <ScalarProperty Name="baslangic" ColumnName="baslangic" />
+                <ScalarProperty Name="bitis" ColumnName="bitis" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+                <ScalarProperty Name="pozisyon" ColumnName="pozisyon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job">
+            <EntityTypeMapping TypeName="yenimvcModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="baslangic_tarihi" ColumnName="baslangic_tarihi" />
+                <ScalarProperty Name="bitis_tarihi" ColumnName="bitis_tarihi" />
+                <ScalarProperty Name="basvuranlarin_listesi" ColumnName="basvuranlarin_listesi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="resim">
+            <EntityTypeMapping TypeName="yenimvcModel.resim">
+              <MappingFragment StoreEntitySet="resim">
+                <ScalarProperty Name="resimId" ColumnName="resimId" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="goruntu" ColumnName="goruntu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sorular">
+            <EntityTypeMapping TypeName="yenimvcModel.Sorular">
+              <MappingFragment StoreEntitySet="Sorular">
+                <ScalarProperty Name="Soruid" ColumnName="Soruid" />
+                <ScalarProperty Name="soru" ColumnName="soru" />
+                <ScalarProperty Name="cevap" ColumnName="cevap" />
+                <ScalarProperty Name="cd_creater" ColumnName="cd_creater" />
+                <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+                <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+                <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="yenimvcModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="parola" ColumnName="parola" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+                <ScalarProperty Name="bölüm" ColumnName="bölüm" />
+                <ScalarProperty Name="öğretim_türü" ColumnName="öğretim türü" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="Not_Ortalamasi" ColumnName="Not_Ortalamasi" />
+                <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+                <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+                <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="applicationList" ColumnName="applicationList" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

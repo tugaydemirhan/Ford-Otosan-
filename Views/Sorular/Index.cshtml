@@ -1,0 +1,77 @@
+﻿@model IEnumerable<baslangic1.Models.Sorular>
+
+@{
+    ViewBag.Title = "SORU LİSTESİ";
+}
+
+<h2 style="color:#fff;">SORULAR</h2>
+
+<p>
+    @Html.ActionLink("Yeni Soru Oluştur", "Create")
+</p>
+
+<!-- <table class="table" style="color:#fff;">-->
+<div class="well" style="opacity:0.9;">
+    <table class="table">
+        <th>
+            @Html.DisplayNameFor(model => model.soru)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cevap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_creater)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_modifier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_modified)
+        </th>
+        <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soru)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cevap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_creater)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_modifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dt_created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dt_modified)
+                </td>
+                <td>
+
+                    @if ((int)Session["isAdmin"] == 1)
+                    {
+                        <!--Admin hesabi ile gorulebilecek butonlar-->
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Soruid }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Soruid }, new { @class = "btn btn-danger" })
+                    }
+                    else
+                    {
+                        <!-- User hesabi ile gorulebilecek butonlar-->
+                    }
+
+                    @Html.ActionLink("Details", "Details", new { id = item.Soruid }, new { @class = "btn btn-success" })
+
+                </td>
+            </tr>
+        }
+
+    </table>

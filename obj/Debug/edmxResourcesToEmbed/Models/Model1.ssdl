@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="yenimvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="basvuru">
+    <Key>
+      <PropertyRef Name="basvuruid" />
+    </Key>
+    <Property Name="basvuruid" Type="int" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="cv" Type="varbinary(max)" />
+    <Property Name="soru1" Type="int" />
+    <Property Name="soru2" Type="int" />
+    <Property Name="soru3" Type="int" />
+    <Property Name="soru4" Type="int" />
+    <Property Name="soru5" Type="int" />
+    <Property Name="cevap1" Type="varbinary" MaxLength="500" />
+    <Property Name="cevap2" Type="varchar" MaxLength="500" />
+    <Property Name="cevap3" Type="nchar" MaxLength="500" />
+    <Property Name="cevap4" Type="nchar" MaxLength="500" />
+    <Property Name="cevap5" Type="nchar" MaxLength="500" />
+    <Property Name="cd_creater" Type="int" />
+    <Property Name="dt_created" Type="datetime" />
+    <Property Name="cd_modifier" Type="int" />
+    <Property Name="dt_modified" Type="datetime" />
+    <Property Name="Kayit_sonlandir" Type="int" />
+  </EntityType>
+  <EntityType Name="ilan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="baslik" Type="varchar" MaxLength="500" />
+    <Property Name="baslangic" Type="datetime" />
+    <Property Name="bitis" Type="datetime" />
+    <Property Name="aciklama" Type="varchar(max)" />
+    <Property Name="pozisyon" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobId" />
+    </Key>
+    <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isim" Type="nchar" MaxLength="10" />
+    <Property Name="baslangic_tarihi" Type="datetime" />
+    <Property Name="bitis_tarihi" Type="datetime" />
+    <Property Name="basvuranlarin_listesi" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="resim">
+    <Key>
+      <PropertyRef Name="resimId" />
+    </Key>
+    <Property Name="resimId" Type="int" Nullable="false" />
+    <Property Name="isim" Type="varchar" MaxLength="150" />
+    <Property Name="goruntu" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Sorular">
+    <Key>
+      <PropertyRef Name="Soruid" />
+    </Key>
+    <Property Name="Soruid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="soru" Type="nchar" MaxLength="100" />
+    <Property Name="cevap" Type="nchar" MaxLength="100" />
+    <Property Name="cd_creater" Type="int" />
+    <Property Name="cd_modifier" Type="int" />
+    <Property Name="dt_created" Type="datetime" />
+    <Property Name="dt_modified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parola" Type="nchar" MaxLength="25" />
+    <Property Name="isim" Type="nchar" MaxLength="50" />
+    <Property Name="soyisim" Type="nchar" MaxLength="50" />
+    <Property Name="bölüm" Type="nchar" MaxLength="100" />
+    <Property Name="öğretim türü" Type="nchar" MaxLength="100" />
+    <Property Name="telefon" Type="nchar" MaxLength="20" />
+    <Property Name="mail" Type="nchar" MaxLength="100" />
+    <Property Name="Not_Ortalamasi" Type="float" />
+    <Property Name="cd_modifier" Type="int" />
+    <Property Name="dt_modified" Type="datetime" />
+    <Property Name="dt_created" Type="datetime" />
+    <Property Name="isAdmin" Type="int" />
+    <Property Name="applicationList" Type="varchar" MaxLength="250" />
+    <Property Name="picture" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="basvurusoru1">
+    <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sorular">
+        <PropertyRef Name="Soruid" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="soru1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="basvurusoru2">
+    <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sorular">
+        <PropertyRef Name="Soruid" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="soru2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="basvurusoru3">
+    <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sorular">
+        <PropertyRef Name="Soruid" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="soru3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="basvurusoru4">
+    <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sorular">
+        <PropertyRef Name="Soruid" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="soru4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="basvurusoru5">
+    <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sorular">
+        <PropertyRef Name="Soruid" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="soru5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__basvuru__userid__2F10007B">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="is">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="basvuru" Type="Self.basvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobId" />
+      </Principal>
+      <Dependent Role="basvuru">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="yenimvcModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="basvuru" EntityType="Self.basvuru" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ilan" EntityType="Self.ilan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="resim" EntityType="Self.resim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sorular" EntityType="Self.Sorular" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="basvurusoru1" Association="Self.basvurusoru1">
+      <End Role="Sorular" EntitySet="Sorular" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="basvurusoru2" Association="Self.basvurusoru2">
+      <End Role="Sorular" EntitySet="Sorular" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="basvurusoru3" Association="Self.basvurusoru3">
+      <End Role="Sorular" EntitySet="Sorular" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="basvurusoru4" Association="Self.basvurusoru4">
+      <End Role="Sorular" EntitySet="Sorular" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="basvurusoru5" Association="Self.basvurusoru5">
+      <End Role="Sorular" EntitySet="Sorular" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="FK__basvuru__userid__2F10007B" Association="Self.FK__basvuru__userid__2F10007B">
+      <End Role="User" EntitySet="User" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+    <AssociationSet Name="is" Association="Self.is">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="basvuru" EntitySet="basvuru" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

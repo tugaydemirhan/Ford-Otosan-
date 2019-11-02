@@ -1,0 +1,39 @@
+﻿@model IEnumerable<baslangic1.Models.resim>
+
+@{
+    ViewBag.Title = "Kullanıcılar";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.isim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.goruntu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.isim)
+        </td>
+        <td>
+            <img src="data:image;base64,@Convert.ToBase64String(item.goruntu)" style="height:250px;width:250px;"/>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.resimId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.resimId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.resimId })
+        </td>
+    </tr>
+}
+
+</table>

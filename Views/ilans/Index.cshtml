@@ -1,0 +1,82 @@
+﻿@model IEnumerable<baslangic1.Models.ilan>
+
+@{
+    ViewBag.Title = "İş İlanları";
+}
+
+<h2 style="color:#fff;">İş ilanları</h2>
+@if (Session["isAdmin"] != null && (int)Session["isAdmin"] == 1)
+{
+    <p>
+        @Html.ActionLink("Yeni İlan Ekle", "Create")
+    </p>
+}
+    <div class="well" style="opacity:0.9;">
+        <table class="table">
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.baslangic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.bitis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.aciklama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pozisyon)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.baslangic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bitis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pozisyon)
+                    </td>
+                    <td>
+                        @if (Session["isAdmin"] == null)
+                        {
+                            <!--Giris yapmamis kullanici-->
+                        }
+                        else
+                        {
+                            <!--Giris yapmis kullanici-->
+                            if ((int)Session["isAdmin"] == 1)
+                            {
+                                <!--Admin hesabi ile gorulebilecek butonlar-->
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            }
+                            else
+                            {
+                                <!-- User hesabi ile gorulebilecek butonlar-->
+
+                            }
+
+                        }
+                        
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+                    </td>
+                </tr>
+            }
+
+        </table>

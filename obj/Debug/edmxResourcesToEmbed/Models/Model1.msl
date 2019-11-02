@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="yenimvcModelStoreContainer" CdmEntityContainer="yenimvcEntities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="yenimvcModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="basvuru">
+      <EntityTypeMapping TypeName="yenimvcModel.basvuru">
+        <MappingFragment StoreEntitySet="basvuru">
+          <ScalarProperty Name="basvuruid" ColumnName="basvuruid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="cv" ColumnName="cv" />
+          <ScalarProperty Name="soru1" ColumnName="soru1" />
+          <ScalarProperty Name="soru2" ColumnName="soru2" />
+          <ScalarProperty Name="soru3" ColumnName="soru3" />
+          <ScalarProperty Name="soru4" ColumnName="soru4" />
+          <ScalarProperty Name="soru5" ColumnName="soru5" />
+          <ScalarProperty Name="cevap1" ColumnName="cevap1" />
+          <ScalarProperty Name="cevap2" ColumnName="cevap2" />
+          <ScalarProperty Name="cevap3" ColumnName="cevap3" />
+          <ScalarProperty Name="cevap4" ColumnName="cevap4" />
+          <ScalarProperty Name="cevap5" ColumnName="cevap5" />
+          <ScalarProperty Name="cd_creater" ColumnName="cd_creater" />
+          <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+          <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+          <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+          <ScalarProperty Name="Kayit_sonlandir" ColumnName="Kayit_sonlandir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ilan">
+      <EntityTypeMapping TypeName="yenimvcModel.ilan">
+        <MappingFragment StoreEntitySet="ilan">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="baslik" ColumnName="baslik" />
+          <ScalarProperty Name="baslangic" ColumnName="baslangic" />
+          <ScalarProperty Name="bitis" ColumnName="bitis" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="pozisyon" ColumnName="pozisyon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job">
+      <EntityTypeMapping TypeName="yenimvcModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="baslangic_tarihi" ColumnName="baslangic_tarihi" />
+          <ScalarProperty Name="bitis_tarihi" ColumnName="bitis_tarihi" />
+          <ScalarProperty Name="basvuranlarin_listesi" ColumnName="basvuranlarin_listesi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="resim">
+      <EntityTypeMapping TypeName="yenimvcModel.resim">
+        <MappingFragment StoreEntitySet="resim">
+          <ScalarProperty Name="resimId" ColumnName="resimId" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="goruntu" ColumnName="goruntu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sorular">
+      <EntityTypeMapping TypeName="yenimvcModel.Sorular">
+        <MappingFragment StoreEntitySet="Sorular">
+          <ScalarProperty Name="Soruid" ColumnName="Soruid" />
+          <ScalarProperty Name="soru" ColumnName="soru" />
+          <ScalarProperty Name="cevap" ColumnName="cevap" />
+          <ScalarProperty Name="cd_creater" ColumnName="cd_creater" />
+          <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+          <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+          <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="yenimvcModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+          <ScalarProperty Name="bölüm" ColumnName="bölüm" />
+          <ScalarProperty Name="öğretim_türü" ColumnName="öğretim türü" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="Not_Ortalamasi" ColumnName="Not_Ortalamasi" />
+          <ScalarProperty Name="cd_modifier" ColumnName="cd_modifier" />
+          <ScalarProperty Name="dt_modified" ColumnName="dt_modified" />
+          <ScalarProperty Name="dt_created" ColumnName="dt_created" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+          <ScalarProperty Name="applicationList" ColumnName="applicationList" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

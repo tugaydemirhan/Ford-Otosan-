@@ -1,0 +1,66 @@
+﻿@model baslangic1.Models.Sorular
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sorular</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cevap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cevap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_creater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_creater)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_modifier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_modifier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_modified)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Soruid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

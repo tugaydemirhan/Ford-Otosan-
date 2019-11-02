@@ -1,0 +1,58 @@
+﻿@model baslangic1.Models.ilan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ilan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.baslangic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.baslangic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bitis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bitis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pozisyon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pozisyon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<baslangic1.Models.User>
+
+@{
+    ViewBag.Title = "Kullanıcılar";
+}
+
+<h2 style="color:#fff;">Kayıt Olan Kullanıcılar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create")
+</p>
+<div class="well">
+    <table class="table table-bordered">
+        <tr>
+            <!--<th>
+        @Html.DisplayNameFor(model => model.parola)
+    </th>-->
+            <th>
+                @Html.DisplayNameFor(model => model.isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soyisim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bölüm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.öğretim_türü)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Not_Ortalamasi)
+            </th>
+            <!--<th>
+            @Html.DisplayNameFor(model => model.cd_modifier)
+        </th>-->
+            <!-- <th>
+                    @Html.DisplayNameFor(model => model.dt_modified)
+                </th>-->
+                <th>
+                    @Html.DisplayNameFor(model => model.dt_created)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.isAdmin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.picture)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.parola)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soyisim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bölüm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.öğretim_türü)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Not_Ortalamasi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_modifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dt_modified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dt_created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isAdmin)
+                </td>
+                <td>
+                    <form target="_blank" action=@Url.Action("Download", "Users", new { id = item.userId })>
+                            <button class="btn btn-primary" onclick="location.href='@Url.Action("Download", "Users", new { id = item.userId })'">
+                                <span class="glyphicon glyphicon-download-alt"></span> CV
+                            </button>
+
+                    </form>
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.userId }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Details", "Details", new { id = item.userId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.userId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            }
+
+        </table>
+    </div>
