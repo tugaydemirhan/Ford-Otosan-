@@ -1,5 +1,5 @@
+Ford Otosan Öğrenci Başvuru Sistemi
 
-Ford Otosanda MVC de geliştirdiğim küçük bir başvuru programım
 Bu proje Ford Otosan'daki staj projem. Projenin ana motivasyonu, iş başvurularından sorumlu bir platform tasarlamaktır.
 
 Açıklama
