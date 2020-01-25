@@ -1,4 +1,3 @@
-Ford Otosan Öğrenci Başvuru Sistemi
 
 Bu proje Ford Otosan'daki staj projem. Projenin ana motivasyonu, iş başvurularından sorumlu bir platform tasarlamaktır.
 
